@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELITEPRO SESSION ID</title>
+    <style>
+        :root {
+            --dark-bg: #0a0a0f;
+            --panel-bg: #161622;
+            --accent-color: #3a86ff;
+            --accent-hover: #2b6fd1;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --border-color: #2a2a3a;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+        
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+        }
+        
+        .control-card {
+            background: var(--panel-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .control-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: rgba(58, 134, 255, 0.3);
+        }
+        
+        .control-card:active {
+            transform: translateY(0);
+        }
+        
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+        
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 240px;
+        }
+        
+        .qr-card .card-icon { color: var(--success-color); }
+        .pair1-card .card-icon { color: var(--warning-color); }
+        .pair2-card .card-icon { color: var(--danger-color); }
+        .wa-card .card-icon { color: var(--info-color); }
+        
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            width: 100%;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: var(--panel-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+        
+        .close-modal {
+            color: var(--text-secondary);
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .control-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">ELITEPRO SESSION ID</div>
+            <div class="subtitle">Secure connection management platform</div>
+        </div>
+        
+        <div class="dashboard">
+            <a href="#" class="control-card qr-card" target="_blank">
+                <div class="card-icon">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <h3 class="card-title">QR CODE</h3>
+                <p class="card-desc">Generate or scan authentication QR codes</p>
+            </a>
+            
+            <a href="https://elitepro-session-id-1.onrender.com/pair" class="control-card pair1-card" target="_blank">
+                <div class="card-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <h3 class="card-title">PAIRING CODE 1</h3>
+                <p class="card-desc">Primary device pairing sequence</p>
+            </a>
+            
+            <a href="https://elitepro-session-id-2.onrender.com/pair" class="control-card pair2-card" target="_blank">
+                <div class="card-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3 class="card-title">PAIRING CODE 2</h3>
+                <p class="card-desc">Secondary authentication channel</p>
+            </a>
+            
+            <a href="https://whatsapp.com/channel/0029VaXaqHII1rcmdDBBsd3g" class="control-card wa-card" target="_blank">
+                <div class="card-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3 class="card-title">WHATSAPP CHANNEL</h3>
+                <p class="card-desc">Official communications channel</p>
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        © 2025 ELITEPRO SYSTEMS | All rights reserved
+    </footer>
+    
+    <script>
+        // You can add any additional JavaScript functionality here
+        // For example, tracking clicks or analytics
+        document.querySelectorAll('.control-card').forEach(card => {
+            card.addEventListener('click', function() {
+                console.log('Navigating to:', this.href);
+            });
+        });
+    </script>
+</body>
+</html>
