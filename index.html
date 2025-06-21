@@ -13,10 +13,10 @@
             --text-primary: #e0e0e0;
             --text-secondary: #a0a0a0;
             --border-color: #2a2a3a;
-            --success-color: #28a745;
             --warning-color: #ffc107;
             --danger-color: #dc3545;
             --info-color: #17a2b8;
+            --online-color: #00e676;
         }
         
         * {
@@ -40,6 +40,7 @@
         .container {
             width: 100%;
             max-width: 1200px;
+            position: relative;
         }
         
         .header {
@@ -68,6 +69,32 @@
             height: 3px;
             background: var(--accent-color);
             border-radius: 3px;
+        }
+        
+        .network-status {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .status-light {
+            width: 10px;
+            height: 10px;
+            background-color: var(--online-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--online-color);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
         }
         
         .subtitle {
@@ -129,7 +156,6 @@
             max-width: 240px;
         }
         
-        .qr-card .card-icon { color: var(--success-color); }
         .pair1-card .card-icon { color: var(--warning-color); }
         .pair2-card .card-icon { color: var(--danger-color); }
         .wa-card .card-icon { color: var(--info-color); }
@@ -142,38 +168,6 @@
             width: 100%;
             padding-top: 1.5rem;
             border-top: 1px solid var(--border-color);
-        }
-        
-        /* Modal styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: var(--panel-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
-        
-        .close-modal {
-            color: var(--text-secondary);
-            float: right;
-            font-size: 1.5rem;
-            cursor: pointer;
-            margin-bottom: 1rem;
         }
         
         @media (max-width: 768px) {
@@ -189,6 +183,12 @@
             .control-card {
                 padding: 1.5rem;
             }
+            
+            .network-status {
+                position: static;
+                justify-content: center;
+                margin-top: 1rem;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -198,18 +198,14 @@
     <div class="container">
         <div class="header">
             <div class="logo">ELITEPRO SESSION ID</div>
+            <div class="network-status">
+                <div class="status-light"></div>
+                <span>Network Active</span>
+            </div>
             <div class="subtitle">Secure connection management platform</div>
         </div>
         
         <div class="dashboard">
-            <a href="#" class="control-card qr-card" target="_blank">
-                <div class="card-icon">
-                    <i class="fas fa-qrcode"></i>
-                </div>
-                <h3 class="card-title">QR CODE</h3>
-                <p class="card-desc">Generate or scan authentication QR codes</p>
-            </a>
-            
             <a href="https://elitepro-session-id-1.onrender.com/pair" class="control-card pair1-card" target="_blank">
                 <div class="card-icon">
                     <i class="fas fa-key"></i>
@@ -226,7 +222,7 @@
                 <p class="card-desc">Secondary authentication channel</p>
             </a>
             
-            <a href="https://whatsapp.com/channel/0029VaXaqHII1rcmdDBBsd3g" class="control-card wa-card" target="_blank">
+            <a href="https://whatsapp.com/channel/0029VaXaqHII1rcmdDBBsd3g" class="control-card wa-card">
                 <div class="card-icon">
                     <i class="fab fa-whatsapp"></i>
                 </div>
@@ -241,8 +237,34 @@
     </footer>
     
     <script>
-        // You can add any additional JavaScript functionality here
-        // For example, tracking clicks or analytics
+        // Network status simulation
+        const statusLight = document.querySelector('.status-light');
+        const networkStatus = document.querySelector('.network-status span');
+        
+        // Simulate network check (in a real app, you'd check actual connection)
+        function checkNetwork() {
+            // This would be replaced with actual network detection
+            const isOnline = navigator.onLine;
+            
+            if (isOnline) {
+                statusLight.style.backgroundColor = 'var(--online-color)';
+                statusLight.style.boxShadow = '0 0 10px var(--online-color)';
+                networkStatus.textContent = 'Network Active';
+            } else {
+                statusLight.style.backgroundColor = '#ff3d00';
+                statusLight.style.boxShadow = '0 0 10px #ff3d00';
+                networkStatus.textContent = 'Connection Lost';
+            }
+        }
+        
+        // Check initially and set interval
+        checkNetwork();
+        setInterval(checkNetwork, 5000);
+        
+        // Listen for actual online/offline events
+        window.addEventListener('online', checkNetwork);
+        window.addEventListener('offline', checkNetwork);
+        
         document.querySelectorAll('.control-card').forEach(card => {
             card.addEventListener('click', function() {
                 console.log('Navigating to:', this.href);
